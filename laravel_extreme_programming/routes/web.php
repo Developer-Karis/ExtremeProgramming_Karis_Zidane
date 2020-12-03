@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
+use App\Models\Avatar;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/users', [AvatarController::class, 'index']);
+Route::get('/show-user/{id}', [AvatarController::class, 'show']);
+Route::get('/edit-user/{id}', [AvatarController::class, 'edit']);
+Route::post('/update-user/{id}', [AvatarController::class, 'update']);
