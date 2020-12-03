@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Galerie;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -85,8 +86,11 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+        Storage::disk('public')->delete('images/' . $image->image);
+        $image->delete();
+        return redirect()->back();
     }
 }

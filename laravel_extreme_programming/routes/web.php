@@ -24,6 +24,9 @@ Route::get('/createGalerie',[GalerieController::class,'create']);
 Route::post('/add-Galerie',[GalerieController::class,'store']);
 Route::get('/picture',[ImageController::class,'index']);
 Route::post('/add-picture',[ImageController::class,'store']);
+Route::get('/galerie/{id}',[GalerieController::class,'show']);
+Route::post('/galerie-delete/{id}',[GalerieController::class,'destroy']);
+Route::post('/image-delete/{id}',[ImageController::class,'destroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

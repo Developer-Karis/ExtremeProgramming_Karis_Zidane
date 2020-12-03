@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galerie;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalerieController extends Controller
 {
@@ -14,8 +16,8 @@ class GalerieController extends Controller
      */
     public function index()
     {
-        $galleries=Galerie::all();
-        return view('galerie');
+        $galeries = Galerie::all();
+        return view('galerie', compact('galeries'));
     }
 
     /**
@@ -36,14 +38,14 @@ class GalerieController extends Controller
      */
     public function store(Request $request)
     {
-        $validateForm=$request->validate([
-            "name"=>"string|required",
+        $validateForm = $request->validate([
+            "name" => "string|required",
         ]);
-        $newGalerie=new Galerie;
-        $newGalerie->name=$request->name;
-        $newGalerie->imageCategorie=$request->file('imageCategorie')->hashName();
+        $newGalerie = new Galerie;
+        $newGalerie->name = $request->name;
+        $newGalerie->imageCategorie = $request->file('imageCategorie')->hashName();
         $newGalerie->save();
-        $request->file('imageCategorie')->storePublicly('images','public');
+        $request->file('imageCategorie')->storePublicly('images', 'public');
         return redirect('/galerie');
     }
 
@@ -53,9 +55,11 @@ class GalerieController extends Controller
      * @param  \App\Models\Galerie  $galerie
      * @return \Illuminate\Http\Response
      */
-    public function show(Galerie $galerie)
+    public function show($id)
     {
-        //
+        $images = Image::all();
+        $galerie = Galerie::find($id);
+        return view('showGalerie', compact('galerie', 'images'));
     }
 
     /**
@@ -87,8 +91,11 @@ class GalerieController extends Controller
      * @param  \App\Models\Galerie  $galerie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Galerie $galerie)
+    public function destroy($id)
     {
-        //
+        $galerie = Galerie::find($id);
+        Storage::disk('public')->delete('images/' . $galerie->imageCategorie);
+        $galerie->delete();
+        return redirect()->back();
     }
 }

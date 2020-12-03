@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-    public function equipe()
+    public function image()
     {
         return $this->belongsTo('App\Models\Galerie','id');
     }
