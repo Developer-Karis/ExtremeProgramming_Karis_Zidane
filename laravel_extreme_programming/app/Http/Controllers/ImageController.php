@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galerie;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -14,7 +16,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Galerie::all();
+        return view('addPicture',compact('categories'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +38,12 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newPicture=new Image;
+        $newPicture->image=$request->file('image')->hashName();
+        $newPicture->categorie_id=$request->categorie_id;
+        $newPicture->save();
+        $request->file('image')->storePublicly('images','public');
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +86,11 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+        Storage::disk('public')->delete('images/' . $image->image);
+        $image->delete();
+        return redirect()->back();
     }
 }

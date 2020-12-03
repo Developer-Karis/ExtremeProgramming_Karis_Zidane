@@ -12,11 +12,14 @@
         <li class="nav-item">
             <a class="nav-link text-white active" href="/avatars">Avatars</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white active" href="#">Gallerie</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="/galerie">Galeries</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white active" href="#">Images</a>
+            <a class="nav-link" href="/createGalerie">Create Galerie</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/picture">Add pictures</a>
         </li>
     </ul>
 </div>

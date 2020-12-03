@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\AvatarController;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\GalerieController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/galerie', [GalerieController::class, 'index']);
+Route::get('/createGalerie', [GalerieController::class, 'create']);
+Route::post('/add-Galerie', [GalerieController::class, 'store']);
+Route::get('/picture', [ImageController::class, 'index']);
+Route::post('/add-picture', [ImageController::class, 'store']);
+Route::get('/galerie/{id}', [GalerieController::class, 'show']);
+Route::post('/galerie-delete/{id}', [GalerieController::class, 'destroy']);
+Route::post('/image-delete/{id}', [ImageController::class, 'destroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
