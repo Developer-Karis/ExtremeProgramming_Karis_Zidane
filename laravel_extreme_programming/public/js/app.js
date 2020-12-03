@@ -49886,8 +49886,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\ExtremeProgramming_Karis_Zidane\laravel_extreme_programming\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\ExtremeProgramming_Karis_Zidane\laravel_extreme_programming\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/zidane/Desktop/MolenGeek/codingschool13/Laravel/Authentification/ExtremeProgramming_Karis_Zidane/laravel_extreme_programming/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/zidane/Desktop/MolenGeek/codingschool13/Laravel/Authentification/ExtremeProgramming_Karis_Zidane/laravel_extreme_programming/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -14,7 +14,8 @@ class GalerieController extends Controller
      */
     public function index()
     {
-        //
+        $galleries=Galerie::all();
+        return view('galerie');
     }
 
     /**
@@ -24,7 +25,7 @@ class GalerieController extends Controller
      */
     public function create()
     {
-        //
+        return view('createGalerie');
     }
 
     /**
@@ -35,7 +36,13 @@ class GalerieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateForm=$request->validate([
+            "name"=>"string|required",
+        ]);
+        $newGalerie=new Galerie;
+        $newGalerie->name=$request->name;
+        $newGalerie->save();
+        return redirect('/galerie');
     }
 
     /**

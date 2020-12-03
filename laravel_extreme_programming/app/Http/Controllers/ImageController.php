@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galerie;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Galerie::all();
+        return view('addPicture',compact('categories'));
     }
 
     /**
