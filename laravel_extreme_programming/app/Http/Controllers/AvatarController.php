@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Avatar;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -95,7 +94,10 @@ class AvatarController extends Controller
      * @param  \App\Models\Avatar  $avatar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Avatar $avatar)
+    public function destroy(Avatar $avatar, $id)
     {
+        $newDelete = Avatar::find($id);
+        $newDelete->delete();
+        return redirect()->back();
     }
 }

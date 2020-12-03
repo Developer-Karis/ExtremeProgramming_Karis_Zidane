@@ -13,9 +13,4 @@ class Avatar extends Model
         'nom',
         'src',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
 }
