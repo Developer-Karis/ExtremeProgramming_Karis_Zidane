@@ -7,9 +7,8 @@
         @foreach ($users as $item)
         <div class="col-4">
             <div class="card mt-5 mb-5 border-dark p-3" style="width: 22rem;">
-                <h1 class="mb-3">User {{$item->id}}</h1>
                 @if ($item->avatar_id == null)
-                <img src="images/256_2.png" alt="..." width="150" height="150">
+                <img src="{{asset('imagesAvatar/256_2.png')}}" alt="..." width="150" height="150" class="m-auto">
                 @else
                 <img src="{{asset('imagesAvatar/'.$item->avatar->src)}}" alt="..." width="150" height="150"
                     class="m-auto">

@@ -4,10 +4,13 @@
             <a class="nav-link text-white active" href="/">Home</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link text-white active" href="/create-avatar">Créer un Avatar</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-white active" href="/users">Users</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white active" href="#">Avatars</a>
+            <a class="nav-link text-white active" href="/avatars">Avatars</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white active" href="#">Gallerie</a>

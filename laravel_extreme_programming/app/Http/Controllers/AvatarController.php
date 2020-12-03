@@ -26,7 +26,9 @@ class AvatarController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $avatars = Avatar::all();
+        return view('pages.avatars', compact('users', 'avatars'));
     }
 
     /**
@@ -98,6 +100,28 @@ class AvatarController extends Controller
     {
         $newDelete = Avatar::find($id);
         $newDelete->delete();
+        return redirect('/avatars');
+    }
+
+    public function destroyUser(User $user, $id)
+    {
+        $newDelete = User::find($id);
+        $newDelete->delete();
+        return redirect('/users');
+    }
+
+    public function createAvatar(Request $request)
+    {
+        return view('pages.createAvatar');
+    }
+
+    public function addAvatar(Request $request)
+    {
+        $addAvatar = new Avatar();
+        $addAvatar->nom = $request->addNameAvatar;
+        $addAvatar->src = $request->file('addAvatar')->hashName();
+        $request->file('addAvatar')->storePublicly('imagesAvatar', 'public');
+        $addAvatar->save();
         return redirect()->back();
     }
 }

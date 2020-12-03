@@ -21,7 +21,7 @@ class AvatarSeeder extends Seeder
             ],
             [
                 'nom' => 'homme2',
-                'src' => '256_2.png',
+                'src' => '256_6.png',
             ],
             [
                 'nom' => 'homme3',
