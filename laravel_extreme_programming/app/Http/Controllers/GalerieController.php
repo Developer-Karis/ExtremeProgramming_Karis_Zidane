@@ -41,7 +41,9 @@ class GalerieController extends Controller
         ]);
         $newGalerie=new Galerie;
         $newGalerie->name=$request->name;
+        $newGalerie->imageCategorie=$request->file('imageCategorie')->hashName();
         $newGalerie->save();
+        $request->file('imageCategorie')->storePublicly('images','public');
         return redirect('/galerie');
     }
 
