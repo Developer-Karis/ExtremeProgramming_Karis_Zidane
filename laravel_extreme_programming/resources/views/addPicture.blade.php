@@ -1,11 +1,11 @@
 @extends('template.template')
 @section('content')
 <h1 class="text-center">Add Pictures</h1>
-<form action="/add-picture" method="POST">
+<form action="/add-picture" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container">
         <label for="picture">Add a picture: <input type="file" id="picture" name="image" ></label>
-        <select name="catgeorie_id" >
+        <select name="categorie_id" >
             <option>Choose category</option>
             @foreach($categories as $category)
             <option value="{{$category->id}}">{{$category->name}}</option>

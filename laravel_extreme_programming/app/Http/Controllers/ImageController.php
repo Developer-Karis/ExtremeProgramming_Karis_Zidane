@@ -26,7 +26,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +37,12 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newPicture=new Image;
+        $newPicture->image=$request->file('image')->hashName();
+        $newPicture->categorie_id=$request->categorie_id;
+        $newPicture->save();
+        $request->file('image')->storePublicly('images','public');
+        return redirect()->back();
     }
 
     /**

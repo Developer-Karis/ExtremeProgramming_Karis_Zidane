@@ -23,6 +23,7 @@ Route::get('/galerie',[GalerieController::class,'index']);
 Route::get('/createGalerie',[GalerieController::class,'create']);
 Route::post('/add-Galerie',[GalerieController::class,'store']);
 Route::get('/picture',[ImageController::class,'index']);
+Route::post('/add-picture',[ImageController::class,'store']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
