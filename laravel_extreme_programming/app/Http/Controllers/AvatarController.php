@@ -75,6 +75,13 @@ class AvatarController extends Controller
      */
     public function update(Request $request, Avatar $avatar, $id)
     {
+        $request->validate([
+            'newName' => ['max:20'],
+            'newAge' => ['min:20', 'max:65'],
+            'newEmail' => ['max:30'],
+            'newNameAvatar' => ['max:15'],
+        ]);
+
         $update = User::find($id);
         $update->name = $request->newName;
         $update->age = $request->newAge;

@@ -16,8 +16,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $categories=Galerie::all();
-        return view('addPicture',compact('categories'));
+        $categories = Galerie::all();
+        return view('addPicture', compact('categories'));
     }
 
     /**
@@ -27,7 +27,6 @@ class ImageController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -38,11 +37,11 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $newPicture=new Image;
-        $newPicture->image=$request->file('image')->hashName();
-        $newPicture->categorie_id=$request->categorie_id;
+        $newPicture = new Image;
+        $newPicture->image = $request->file('image')->hashName();
+        $newPicture->categorie_id = $request->categorie_id;
         $newPicture->save();
-        $request->file('image')->storePublicly('images','public');
+        $request->file('image')->storePublicly('images', 'public');
         return redirect()->back();
     }
 
@@ -92,5 +91,11 @@ class ImageController extends Controller
         Storage::disk('public')->delete('images/' . $image->image);
         $image->delete();
         return redirect()->back();
+    }
+
+    public function download($id)
+    {
+        $img = Image::find($id);
+        return Storage::disk('public')->download('images/' . $img->image);
     }
 }

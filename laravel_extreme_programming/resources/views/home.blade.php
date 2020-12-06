@@ -17,7 +17,6 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
-            <a href="/users" class="btn btn-primary mt-4">Voir les Users</a>
         </div>
     </div>
 </div>
